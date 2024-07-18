@@ -10,7 +10,7 @@ systemctl enable nginx &>> /tmp/expense.log
 systemctl start nginx &>> /tmp/expense.log
 STAT $?
 
-Heaing "Copy Expense file"
+Heading "Copy Expense file"
 cp expense.conf /etc/nginx/default.d/expense.conf &>> /tmp/expense.log
 STAT $?
 
