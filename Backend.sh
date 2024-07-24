@@ -59,7 +59,7 @@ Heading "Load Schema"
 mysql -h "MYSQL-SERVER-IPADDRESS" -uroot -p$1 < /app/schema/backend.sql
 STAT $?
 
-Heading "enable and start backend service"
+Heading "enable and start back-end service"
 systemctl enable backend
 systemctl start backend
 STAT s?
