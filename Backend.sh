@@ -26,7 +26,7 @@ fi
 STAT $?
 
 Heading "Setup Backend Service"
-cp backend.service /etc/systemd/system/backend.service
+cp backend.yml.service /etc/systemd/system/backend.yml.service
 STAT $?
 
 Heading "Remove Existing Application Directory"
@@ -38,13 +38,13 @@ mkdir /app
 STAT $?
 
 Heading "Download backend content"
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
+curl -o /tmp/backend.yml.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
 STAT $?
 
 cd /app
 
 Heading "Unzip backend file"
-unzip /tmp/backend.zip
+unzip /tmp/backend.yml.zip
 STAT $?
 
 Heading "Install Nodejs dependencies"
@@ -56,12 +56,12 @@ dnf install mysql -y
 STAT $?
 
 Heading "Load Schema"
-mysql -h "MYSQL-SERVER-IPADDRESS" -uroot -p$1 < /app/schema/backend.sql
+mysql -h "MYSQL-SERVER-IPADDRESS" -uroot -p$1 < /app/schema/backend.yml.sql
 STAT $?
 
 Heading "enable and start back-end service"
-systemctl enable backend
-systemctl start backend
+systemctl enable backend.yml
+systemctl start backend.yml
 STAT s?
 
 Heading "Deamon Reload"
